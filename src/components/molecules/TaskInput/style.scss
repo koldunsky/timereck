@@ -1,0 +1,31 @@
+.rek-input {
+  position: relative;
+  z-index: z-index(rek-input);
+  margin-bottom: $main-pad;
+  // Input
+  .react-autosuggest__input {
+    width: 100%;
+  }
+
+  // Container
+  .react-autosuggest__container {
+    position: relative;
+  }
+
+  // List
+  .react-autosuggest__suggestions-list {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background: $white;
+  }
+
+  // Item
+  .react-autosuggest__suggestion {
+    color: $grey;
+    text-align: left;
+  }
+}

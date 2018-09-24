@@ -1,0 +1,26 @@
+// global styles
+
+html {
+  background: $grey-blue;
+  height: 100%;
+  width: 100%;
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  background: $grey-blue;
+  height: 100%;
+  width: 100%;
+  @include main_font;
+  color: $white;
+  font-weight: 400;
+  position: relative;
+  min-width: $bp_fablet_start /2;
+  font-size: 1.6em;
+}
+
+a {
+  text-decoration: none;
+}

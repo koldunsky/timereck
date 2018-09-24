@@ -1,0 +1,11 @@
+// z-indexes
+$z-layers: (
+  'body',
+  'rek-timer',
+  'rek-button',
+  'rek-input',
+);
+
+@function z-index($layer_name) {
+  @return index($z-layers, $layer_name);
+}

@@ -1,0 +1,26 @@
+$indent: (
+        10,
+        20,
+        30,
+        40,
+);
+
+@mixin make-helper($class, $prop) {
+  @each $gap in $indent {
+    $num: unitless($gap);
+    #{$class + $gap} {
+      #{$prop}: #{$gap + 'px'};
+    }
+  }
+}
+
+@include make-helper('.mt', 'margin-top');
+@include make-helper('.mr', 'margin-right');
+@include make-helper('.mb', 'margin-bottom');
+@include make-helper('.ml', 'margin-left');
+@include make-helper('.ml', 'margin-left');
+
+@include make-helper('.pt', 'padding-top');
+@include make-helper('.pr', 'padding-right');
+@include make-helper('.pb', 'padding-bottom');
+@include make-helper('.pl', 'padding-left');

@@ -1,0 +1,109 @@
+@import './functions';
+
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin font-setup($f, $l, $u1, $u2) {
+  font-family: $f;
+  src:
+    local($l),
+    url($u1) format('woff'),
+    url($u2) format('woff2');
+}
+
+@mixin font-param($s, $l, $w, $c: #000000) {
+  font-size: $s;
+  line-height: $l;
+  font-weight: $w;
+  color: $c;
+}
+
+
+@mixin font_opengost {
+  font-family: 'opengost', 'Courier New','Courier', monospace;
+}
+
+@mixin main_font {
+  // @include font_opengost;
+  font-family: 'PT Mono', monospace;
+}
+
+
+@mixin hasicon_before {
+  //font-size: 1rem;
+  display: inline-block;
+
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-decoration: none !important;
+}
+
+
+
+@mixin hasicon {
+  position: relative;
+  &:before {
+    @include hasicon_before;
+  }
+
+}
+
+@mixin hasicon_after {
+  position: relative;
+  &:after {
+    @include hasicon_before;
+  }
+}
+
+
+@mixin media-from($query) {
+  @media screen and (min-width: #{$query}) {
+    @content;
+  }
+}
+@mixin media-up-to($query) {
+  @media screen and (max-width: #{$query}) {
+    @content;
+  }
+}
+
+/**
+* $fz {rem} base font size
+* $gap {rem} gap from base
+* $start_bp {rem} start breakpoint
+* $end_bp {rem} end breakpoint
+*/
+
+@mixin font-css-lock($fz, $gap, $start_bp, $end_bp) {
+  $first_bp: strip-unit($bp_fablet_start);
+  $last_bp: strip-unit($bp_desktop_start);
+  $raw_gap: strip-unit($gap);
+  font-size: $fz;
+  @include media-from($bp_fablet_start) {
+    font-size: calc( #{$fz} + #{$raw_gap} * (100vw - #{$gap}) / (#{$last_bp} - #{$first_bp}) );
+  }
+  @include media-from($bp_desktop_start) {
+    font-size: calc( #{$fz} + #{$raw_gap} * 1rem );
+  }
+}

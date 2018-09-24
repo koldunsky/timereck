@@ -1,0 +1,13 @@
+@import '../tools';
+
+h1, .h1 {
+  font-weight: 400;
+  //@include font-css-lock(2rem, 3rem, $bp_fablet_start, $bp_desktop_start);
+  font-size: 3rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}

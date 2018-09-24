@@ -1,0 +1,18 @@
+.main-header {
+  //display: flex;
+  //justify-content: space-between;
+  //padding: $main-pad;
+  text-align: center;
+}
+
+.main-header__workarea {
+  text-align: center;
+}
+
+.main-header__logo {
+  margin-bottom: $main-pad;
+}
+
+.main-header__rec-button {
+  margin-bottom: $main-pad;
+}

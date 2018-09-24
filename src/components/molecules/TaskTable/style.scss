@@ -1,0 +1,45 @@
+.rek-table {
+  max-width: 100%;
+}
+
+.rek-table__list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rek-table__task {
+  padding: 1rem 0;
+  @include clearfix;
+}
+
+%table-cell {
+  padding: .2rem 0;
+}
+
+.rek-table__task-name {
+  @extend %table-cell;
+  @include media-from($bp_fablet_start) {
+    width: 30%;
+    float: left;
+  }
+}
+
+.rek-table__task-start {
+  @extend %table-cell;
+  @include media-from($bp_fablet_start) {
+    width: 50%;
+    float: left;
+    text-align: right;
+  }
+}
+
+.rek-table__task-time {
+  @extend %table-cell;
+  @include media-from($bp_fablet_start) {
+    width: 20%;
+    float: left;
+    text-align: right;
+  }
+}
+

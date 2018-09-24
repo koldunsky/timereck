@@ -1,0 +1,24 @@
+//$red: #B91903;
+$red: red;
+$primary: $red;
+$black: #000;
+$white: #fff;
+$grey: #444;
+$grey-blue: #292D36;
+$cyan: #51CEFA;
+
+$duration: .3s;
+
+$main-pad: 2rem;
+$radius: 3px;
+
+
+$bp_fablet_start: 37.5em; // 599px
+$bp_tablet_start: 56.25em; // 900px
+$bp_desktop_start: 75em; // 1200px
+$bp_wide_start: 112.5em; // 1800px
+
+$bp_mobile_end: $bp_fablet_start -1;
+$bp_fablet_end: $bp_tablet_start -1;
+$bp_tablet_end: $bp_desktop_start -1;
+$bp_desktop_end: $bp_wide_start -1;

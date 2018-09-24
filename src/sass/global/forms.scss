@@ -1,0 +1,27 @@
+button, input, optgroup, select, textarea {
+  @include main_font;
+}
+%input {
+  /* Remove First */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  border-radius: $radius;
+  border: 1px solid $black;
+  padding: 1rem;
+}
+%active_input {
+  outline: none;
+  border-color: $cyan;
+}
+
+input {
+  @extend %input;
+  &:active,
+  &:hover,
+  &:focus {
+    @extend %active_input;
+  }
+}
+

@@ -1,0 +1,42 @@
+$button_w: 40px;
+$base: '.select-wrap';
+
+#{$base}_geo {
+  &::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: $button_w;
+    background: transparent;
+  }
+
+  &:hover::after {
+    background: $black;
+    //TODO: глючная граница
+  }
+
+  &__btn {
+    width: $button_w;
+    position: relative;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+    float: left;
+    box-sizing: border-box;
+
+    &:hover {
+      background: #fff;
+      color: $black;
+    }
+  }
+
+  .rw-dropdownlist {
+    float: left;
+    width: calc(100% - #{$button_w});
+    box-sizing: border-box;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

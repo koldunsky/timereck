@@ -1,0 +1,85 @@
+$base: '.checkbox-wrap';
+
+#{$base} {
+  @include font-param(14px, 32px, 400);
+  padding-left: 30px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+
+  &:hover {
+    color: $primary;
+  }
+
+  #{$base}__input {
+    display: none;
+  }
+
+  &__input ~ &__mask {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    @include size(18px);
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+  }
+
+  &__input:checked ~ &__mask {
+    border-color: $primary;
+    background-color: $primary;
+  }
+
+  &__input:checked ~ &__mask::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    @include size(8px, 5px);
+    border-bottom: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    transform: rotate(-45deg);
+  }
+}
+
+
+/* Modificators */
+// inverted
+#{$base}_inverted {
+  #{$base}__input:checked ~ #{$base}__mask {
+    border-color: $grey;
+    background-color: #fff;
+  }
+  #{$base}__input:checked ~ #{$base}__mask::before {
+    border-color: $primary;
+  }
+}
+
+// disabled
+#{$base}_disabled {
+  cursor: default;
+
+  &:hover {
+    color: currentcolor;
+  }
+
+  #{$base}__mask {
+    border-color: $grey !important;
+    background-color: $grey !important;
+  }
+}
+
+#{$base}_disabled#{$base}_inverted {
+  cursor: default;
+
+  &:hover {
+    color: currentcolor;
+  }
+
+  #{$base}__mask {
+    border-color: $grey !important;
+    background-color: $white !important;
+    &::before {
+      border-color: $grey !important;
+    }
+  }
+}

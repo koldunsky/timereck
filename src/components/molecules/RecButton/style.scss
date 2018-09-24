@@ -1,0 +1,61 @@
+.rec-btn__container {
+  position: relative;
+  //display: flex;
+  //font-size: 2rem;
+  //width: 10rem;
+}
+
+.rec-btn {
+  @include main_font;
+  font-size: 2rem;
+  display: block;
+  margin: auto;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  background: $red;
+  border: 1px solid $red;
+  width: 17rem;
+  height: 17rem;
+  border-radius: 50%;
+  cursor: pointer;
+  color: $white;
+  user-select: none;
+  z-index: z-index('rek-button');
+
+  &:hover {
+    background-color: $black;
+    color: $white;
+    border-color: $black;
+  }
+
+  &_active {
+    background: darken($red, 20%) !important;
+
+    $border_w: 3px;
+    &::after {
+      content: '';
+      position: absolute;
+      width: calc(100% + #{$border_w *2});
+      height: calc(100% + #{$border_w *2});
+      background: transparent;
+      top: -#{$border_w};
+      left: -#{$border_w};
+      border: 3px solid $red;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-radius: 50%;
+      box-sizing: border-box;
+      animation: rotate 1s infinite;
+    }
+  }
+
+  &_disabled {
+    opacity: .5;
+    background: $red;
+    &:hover {
+      background: $red;
+    }
+  }
+}
