@@ -6,7 +6,7 @@ import axiosMiddleware from 'redux-axios-middleware';
 import { client as axiosClient } from './middlewares/axios'
 
 import { createLogger } from 'redux-logger';
-import rootReducer from '../reducers/index';
+import rootReducer from './reducers/index';
 
 export default function configureStore(initialState = {}) {
   const composerEnhancers = (__DEV__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;

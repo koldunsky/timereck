@@ -94,6 +94,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      'scss-tools': path.resolve(__dirname, 'src/sass/_tools.scss'),
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -191,6 +192,7 @@ module.exports = {
                     {
                       loader: require.resolve('sass-loader'),
                       options: {
+                        data: '@import "~scss-tools";',
                         sourceMap: true,
                         includePaths: [
                           paths.bourbon,

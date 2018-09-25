@@ -22,6 +22,10 @@ const publicUrl = '';
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 
+
+// Custom loaders
+const fontLoader = require('./loaders/fonts');
+
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
@@ -88,6 +92,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      'scss-tools': path.resolve(__dirname, '../src/global/sass/_tools.scss'),
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -166,17 +171,6 @@ module.exports = {
                   importLoaders: 1,
                 },
               },
-              require.resolve('resolve-url-loader'),
-              {
-                loader: require.resolve('sass-loader'),
-                options: {
-                  sourceMap: true,
-                  includePaths: [
-                    paths.bourbon,
-                    paths.bourbonNeat,
-                  ]
-                }
-              },
               {
                 loader: require.resolve('postcss-loader'),
                 options: {
@@ -195,10 +189,27 @@ module.exports = {
                       flexbox: 'no-2009',
                     }),
                   ],
+                  sourceMap: true,
                 },
+              },
+              require.resolve('resolve-url-loader'),
+              {
+                loader: require.resolve('sass-loader'),
+                options: {
+                  data: '@import "~scss-tools";',
+                  sourceMap: true,
+                  includePaths: [
+                    paths.bourbon,
+                    paths.bourbonNeat,
+                  ]
+                }
               },
             ],
           },
+
+          // Font loader
+          fontLoader,
+
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.

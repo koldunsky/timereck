@@ -1,7 +1,7 @@
 import createReducer from 'create-redux-reducer';
 import moment from 'moment';
-import Task from '../public/constructors/task';
-import * as c from '../public/constants/app';
+import Task from '../../constructors/task';
+import * as c from '../../constants/app';
 const initialState = {
   title: 'TIMEREK — Your personal time-reckoner',
   main: '',

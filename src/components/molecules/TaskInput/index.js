@@ -2,7 +2,7 @@ import React, {Component, } from 'react';
 // import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../../public/actions/app';
+import * as actions from '../../../store/actions/app';
 import _uniq from 'lodash/uniq';
 import _map from 'lodash/map';
 // import moment from 'moment';

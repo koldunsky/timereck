@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actions from '../../../public/actions/app';
+import * as actions from '../../../store/actions/app';
 import classNames from 'classnames';
 import _ from 'lodash';
 import './style.scss';

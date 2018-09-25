@@ -2,7 +2,7 @@ import React, {Component, } from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../../public/actions/app';
+import * as actions from '../../../store/actions/app';
 import moment from 'moment'; //todo: remove moment!
 import durToStr from '../../../utils/durationToString';
 import './style.scss';

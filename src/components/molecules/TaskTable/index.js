@@ -5,7 +5,7 @@ import _map from 'lodash/map';
 // import _sortBy from 'lodash/sortBy';
 import moment from 'moment';
 import durToStr from '../../../utils/durationToString';
-import * as actions from '../../../public/actions/app';
+import * as actions from '../../../store/actions/app';
 import './style.scss';
 
 

@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../public/actions/app';
+import * as actions from '../../store/actions/app';
 
 if(process.env.NODE_ENV === 'development') {
-  require('../../sass/index.scss');
+  require('../../global/sass/index.scss');
 }
 
 class App extends Component {

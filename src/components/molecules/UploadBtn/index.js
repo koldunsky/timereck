@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import './style.scss';
 
-import { importTasks } from '../../../public/actions/app';
+import { importTasks } from '../../../store/actions/app';
 
 @connect(({app})  => ({app}), {importTasks})
 class UploadBtn extends Component {

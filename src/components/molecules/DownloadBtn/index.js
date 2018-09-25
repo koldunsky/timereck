@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
-import {APP_NAME} from '../../../public/constants/app';
+import {APP_NAME} from '../../../constants/app';
 // import _ from 'lodash';
 import './style.scss';
 

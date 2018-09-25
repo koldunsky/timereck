@@ -1,7 +1,7 @@
 // import axios from 'axios';
 // import { APP_BASE_URL } from '../constants/urls';
 // import moment from 'moment';
-import * as c  from '../constants/app';
+import * as c  from '../../constants/app';
 
 /**
  * Изменяет параметры страницы.
