@@ -31,6 +31,7 @@ class RecButton extends Component {
         <button
           className={classes}
           onClick={this.onClick.bind(this)}
+          autoFocus={true}
         >
           {text}
         </button>
