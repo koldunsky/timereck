@@ -25,15 +25,16 @@
   z-index: z-index('rek-button');
 
   &:hover {
-    background-color: $black;
-    color: $white;
-    border-color: $black;
+    //background-color: $black;
+    //color: $white;
+    //border-color: $black;
+    transform: scale(.95);
   }
 
   &_active {
-    background: darken($red, 20%) !important;
+    background: darken($red, 10%) !important;
 
-    $border_w: 3px;
+    $border_w: 4px;
     &::after {
       content: '';
       position: absolute;
@@ -42,7 +43,7 @@
       background: transparent;
       top: -#{$border_w};
       left: -#{$border_w};
-      border: 3px solid $red;
+      border: $border_w solid $red;
       border-left-color: transparent;
       border-right-color: transparent;
       border-radius: 50%;
@@ -51,11 +52,9 @@
     }
   }
 
-  &_disabled {
-    opacity: .5;
+  &_inactive {
+    filter: blur(2px);
     background: $red;
-    &:hover {
-      background: $red;
-    }
+    pointer-events: none;
   }
 }

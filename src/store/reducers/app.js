@@ -11,6 +11,7 @@ const initialState = {
   currentTime: false,
   currentTask: '',
   stopTime: false,
+  taskLoaded: false,
   tasks: [
     {
       text: 'Apple',
@@ -84,6 +85,20 @@ export default createReducer(initialState, {
     return {
       ...state,
       tasks: payload
+    }
+  },
+
+  [c.LOAD_TASK]: (state) => {
+    return {
+      ...state,
+      taskLoaded: true
+    }
+  },
+
+  [c.UNLOAD_TASK]: (state) => {
+    return {
+      ...state,
+      taskLoaded: false
     }
   }
 })

@@ -1,7 +1,7 @@
-import React, {Component, } from 'react';
-// import classNames from 'classnames';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, {Component,} from 'react';
+import classNames from 'classnames';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as actions from '../../../store/actions/app';
 import _uniq from 'lodash/uniq';
 import _map from 'lodash/map';
@@ -25,31 +25,53 @@ class TaskInput extends Component {
     // and they are initially empty because the Autosuggest is closed.
     this.state = {
       value: '',
+      hasError: false,
       suggestions: []
     };
   }
 
-  onChange(event, { newValue }) {
+  onChange(event, {newValue}) {
     this.setState({
-      value: newValue
+      value: newValue,
     });
     this.props.actions.updateTaskName(newValue);
-    console.info(newValue);
   }
+
+  onKeyUp = (e) => {
+    if (e.keyCode === 13) {
+      this.runTask();
+    }
+  };
+
+  runTask = () => {
+    if(this.state.value === '') {
+      this.sayNo();
+      return false;
+    }
+    this.props.actions.unloadTask();
+    this.props.actions.startRek();
+  };
+
+  sayNo = () => {
+    setInterval(() => {
+      this.setState({hasError: false})
+    }, 2000);
+    this.setState({hasError: true});
+  };
 
   // Use your imagination to render suggestions.
   renderSuggestion(suggestion) {
-    return(
-        <div>
-          {suggestion}
-        </div>
+    return (
+      <div>
+        {suggestion}
+      </div>
     );
   }
 
 
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
-  onSuggestionsFetchRequested = ({ value }) => {
+  onSuggestionsFetchRequested = ({value}) => {
     this.setState({
       suggestions: this.getSuggestions(value)
     });
@@ -63,7 +85,7 @@ class TaskInput extends Component {
     const suggestions = _uniq(tasks);
 
     return inputLength === 0 ? [] : suggestions.filter(taskName =>
-        taskName.toLowerCase().slice(0, inputLength) === inputValue
+      taskName.toLowerCase().slice(0, inputLength) === inputValue
     );
   }
 
@@ -75,27 +97,36 @@ class TaskInput extends Component {
   };
 
   render() {
-    const { value, suggestions } = this.state;
-
+    const {value, suggestions} = this.state;
     // Autosuggest will pass through all these props to the input element.
     const inputProps = {
       placeholder: 'Task name',
       value,
-      onChange: this.onChange.bind(this)
+      onChange: this.onChange.bind(this),
+      onKeyUp: this.onKeyUp,
+      autoFocus: true,
     };
 
     // Finally, render it!
-    return (
-      <div className='rek-input'>
-
+    return !this.props.app.taskLoaded ? null : (
+      <div className={classNames([
+        'rek-input',
+        this.state.hasError && 'rek-input_error',
+      ])}>
         <Autosuggest
-            suggestions={suggestions}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-            getSuggestionValue={getSuggestionValue}
-            renderSuggestion={this.renderSuggestion.bind(this)}
-            inputProps={inputProps}
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={this.renderSuggestion.bind(this)}
+          inputProps={inputProps}
         />
+        <button
+          className="rek-input__return"
+          onClick={this.runTask}
+        >
+          Go!
+        </button>
       </div>
     );
   }

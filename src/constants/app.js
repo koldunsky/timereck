@@ -8,6 +8,5 @@ export const UPDATE_TASK_NAME = 'UPDATE_TASK_NAME';
 export const ADD_TASK = 'ADD_TASK';
 export const RESET = 'RESET';
 export const IMPORT_TASKS = 'IMPORT_TASKS';
-
-
-
+export const LOAD_TASK = 'LOAD_TASK';
+export const UNLOAD_TASK = 'UNLOAD_TASK';

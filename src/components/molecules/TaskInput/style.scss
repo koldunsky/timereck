@@ -1,3 +1,21 @@
+$distance: .5rem;
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-$distance);
+  }
+  75% {
+    transform: translateX($distance);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .rek-input {
   position: relative;
   z-index: z-index(rek-input);
@@ -5,11 +23,15 @@
   // Input
   .react-autosuggest__input {
     width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   // Container
   .react-autosuggest__container {
     position: relative;
+    max-width: 100%;
   }
 
   // List
@@ -28,4 +50,33 @@
     color: $grey;
     text-align: left;
   }
+}
+
+.rek-input__return {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 0 1rem;
+
+  &:hover,
+  &:focus {
+    color: $cyan;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 60%;
+    top: 20%;
+    border-left: 1px solid $cyan;
+  }
+}
+
+.rek-input_error {
+  animation: shake 3 200ms ease;
 }

@@ -53,6 +53,18 @@ export function reset() {
     };
 }
 
+export function loadTask() {
+    return {
+        type: c.LOAD_TASK
+    };
+}
+
+export function unloadTask() {
+    return {
+        type: c.UNLOAD_TASK
+    };
+}
+
 export function importTasks(json) {
   return {
     type: c.IMPORT_TASKS,

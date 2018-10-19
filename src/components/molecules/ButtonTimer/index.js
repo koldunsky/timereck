@@ -24,9 +24,8 @@ class ButtonTimer extends Component {
       this.props.app.isRecording ? `${baseClass}_active` : false,
     );
 
-    // console.info(this.props.app.isRecording && this.props.app.startTime);
     if(this.state.workingTime === false) {
-      this.startCount.bind(this)();
+      this.startCount();
     }
 
     const time = moment.duration(this.state.workingTime);
@@ -42,7 +41,7 @@ class ButtonTimer extends Component {
     );
   }
 
-  startCount() {
+  startCount = () => {
     const component = this;
     this.updatefnId = setInterval(()=>{
       const startTime = moment(this.props.app.startTime);
@@ -55,6 +54,7 @@ class ButtonTimer extends Component {
       // console.info(moment().diff(startTime));
     }, 1000)
   }
+
   componentWillUnmount() {
     clearInterval(this.updatefnId);
     this.props.actions.reset(); // TODO make reset method
